@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Feedback Form</title>
+    <meta name="description" content="A premium feedback form showcasing interactive validations and modern aesthetics.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-panel">
+        <header>
+            <h1>Send Feedback</h1>
+            <p>We'd love to hear your thoughts!</p>
+        </header>
+
+        <form id="feedbackForm">
+            <div class="input-group">
+                <label for="username">Name <span id="nameStatus"></span></label>
+                <input type="text" id="username" placeholder="Jane Doe">
+                <div class="feedback-msg" id="nameMsg">Must be at least 3 characters</div>
+            </div>
+
+            <div class="input-group">
+                <label for="useremail">Email <span id="emailStatus"></span></label>
+                <input type="email" id="useremail" placeholder="jane@example.com">
+                <div class="feedback-msg" id="emailMsg">Valid email is required</div>
+            </div>
+
+            <div class="input-group">
+                <label for="usermessage">Message</label>
+                <textarea id="usermessage" rows="4" placeholder="Your message here..."></textarea>
+                <div class="feedback-msg" id="msgMsg">Message is required</div>
+            </div>
+
+            <button type="button" id="submitBtn" class="premium-btn">
+                <span>Submit Form</span>
+                <small class="hint">(Double click to confirm)</small>
+            </button>
+        </form>
+        
+        <div id="successOverlay" class="hidden">
+            <div class="success-content">
+                <h2>🎉 Success!</h2>
+                <p>Your feedback was sent.</p>
+                <button id="closeOverlayBtn" class="premium-btn reset-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
