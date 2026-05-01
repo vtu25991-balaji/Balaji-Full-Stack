@@ -1,43 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Student Registration</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Optional: Phosphor icons for sorting/filtering icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-
 <body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
-<div class="container">
+    <div class="dashboard-container">
+        <header class="glass-panel main-header">
+            <div>
+                <h1>Directory Dashboard</h1>
+                <p>Manage and analyze personnel records</p>
+            </div>
+            <div class="header-stats" id="total-count-display">
+                <span class="stat-value">0</span>
+                <span class="stat-label">Total Records</span>
+            </div>
+        </header>
 
-<h2>Student Registration</h2>
+        <!-- Aggregation Area -->
+        <section class="summary-cards" id="department-summaries">
+            <!-- Cards will be dynamically injected here -->
+        </section>
 
-<form action="/register" method="POST">
+        <!-- Main Content Area -->
+        <main class="content-wrapper glass-panel">
+            <div class="controls-bar">
+                <div class="search-filter-group">
+                    <div class="control-item">
+                        <label for="department-filter">Department</label>
+                        <div class="select-wrapper">
+                            <select id="department-filter">
+                                <option value="all">All Departments</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Design">Design</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="HR">HR</option>
+                                <option value="Sales">Sales</option>
+                            </select>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
+                </div>
 
-<label>Name</label>
-<input type="text" name="name" required>
+                <div class="sort-controls">
+                    <div class="control-item">
+                        <label for="sort-by">Sort By</label>
+                        <div class="select-wrapper">
+                            <select id="sort-by">
+                                <option value="name">Name</option>
+                                <option value="date">Joining Date</option>
+                                <option value="department">Department</option>
+                            </select>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
 
-<label>Email</label>
-<input type="email" name="email" required>
+                    <div class="control-item">
+                        <label for="sort-order">Order</label>
+                        <div class="select-wrapper">
+                            <select id="sort-order">
+                                <option value="asc">Ascending (A-Z, Oldest)</option>
+                                <option value="desc">Descending (Z-A, Newest)</option>
+                            </select>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<label>Date of Birth</label>
-<input type="date" name="dob" required>
+            <div class="table-container">
+                <table id="records-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">
+                                <span>Employee Name</span>
+                            </th>
+                            <th data-sort="department">
+                                <span>Department</span>
+                            </th>
+                            <th data-sort="date">
+                                <span>Joining Date</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Rows injected via JS -->
+                    </tbody>
+                </table>
+                <div id="no-results" class="no-results hidden">
+                    <i class="ph ph-magnifying-glass table-icon"></i>
+                    <p>No records found matching the current filters.</p>
+                </div>
+            </div>
+        </main>
+    </div>
 
-<label>Department</label>
-<select name="department">
-<option>CSE</option>
-<option>IT</option>
-<option>ECE</option>
-<option>EEE</option>
-</select>
-
-<label>Phone</label>
-<input type="text" name="phone" required>
-
-<button type="submit">Register</button>
-
-</form>
-
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
